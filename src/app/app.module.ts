@@ -38,7 +38,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(APPROUTES),
+    RouterModule.forRoot(APPROUTES, { useHash: true }),
     Ng2TableModule,
     PaginationModule.forRoot(),
     TabsModule.forRoot()
