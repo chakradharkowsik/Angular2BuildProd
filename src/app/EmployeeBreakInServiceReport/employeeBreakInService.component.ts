@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeBreakInServiceReportService } from './employeeBreakInServiceReport.service';
-import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
-import { ExportToExcelService } from '../shared/export.service';
 
 @Component({
     moduleId: module.id,
@@ -11,6 +9,14 @@ import { ExportToExcelService } from '../shared/export.service';
 export class EmployeeBreakInServiceReportComponent implements OnInit {
 
     dataLoaded: boolean;
+    selectedYear: string;
+    selectedControlGroup: string;
+    selectedWeekStarting: string;
+    selectedWeekEnding: string;
+
+    Years: Array<string>;
+    ControlGroups: Array<string>;
+
     public rows: Array<any> = [];
     public page = 1;
     public itemsPerPage = 5;
@@ -19,14 +25,14 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
     public length = 0;
 
     public columns: Array<any> = [
-
-        { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
-        { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
-        { title: 'Service Status', className: 'va-m', name: 'serviceStatus' },
-        { title: 'Week Starting', className: 'va-m', name: 'weekStarting' },
-        { title: 'Week Ending', className: 'va-m', name: 'weekEnding' },
-        { title: 'Week Count', className: 'va-m', name: 'weekCount' },
-
+        { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
+        { title: 'Employee Name', className: 'va-m', name: 'FirstName' },
+        { title: 'SSN', className: 'va-m', name: 'SSN' },
+        { title: 'Service Status', className: 'va-m', name: 'ServiceStatus' },
+        { title: 'Week Starting', className: 'va-m', name: 'WeekStarting' },
+        { title: 'Week Ending', className: 'va-m', name: 'WeekEnding' },
+        { title: 'Week Count', className: 'va-m', name: 'WeekCount' }
     ];
 
     public config: any = {
@@ -38,19 +44,64 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
 
     employeeBeakInService: Array<any> = [];
     errorMessage: string;
-    constructor(private _employeeBreakInServiceReportService: EmployeeBreakInServiceReportService,
-        private _export: ExportToExcelService) { }
+    constructor(private _employeeBreakInServiceReportService: EmployeeBreakInServiceReportService) { }
 
     ngOnInit(): void {
 
-        this.onChangeTable(this.config);
-        this.dataLoaded = false;
-        this.employeeBreakInServiceReports();
+        this._employeeBreakInServiceReportService.getReportData().subscribe(data => {
+            this.Years = data.WorkYear;
+            this.ControlGroups = data.ControlGroup;
+            this.selectedWeekStarting = data.WeekStarting;
+            this.selectedWeekEnding = data.WeekEnding;
+        },
+            error => this.errorMessage = <any>error);
+        if (this.selectedWeekStarting === '') {
+            this.selectedWeekStarting = '2016-12-30';
+        }
+        if (this.selectedWeekEnding === '') {
+            this.selectedWeekEnding = '2017-12-30';
+        }
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+    }
+    getFilterValues(): any {
+        let year = this.selectedYear;
+        if (year === '-1') {
+            year = "''";
+        }
 
+        let cg = this.selectedControlGroup;
+        if (cg === 'All' || cg === '-1') {
+            cg = "''";
+        }
+        let ws = this.selectedWeekStarting;
+        if (ws === '' || ws === undefined) {
+            ws = "''";
+        }
+        let we = this.selectedWeekEnding;
+        if (we === '' || we === undefined) {
+            we = "''";
+        }
+        const filterCriteria = {
+            selectedYear: year,
+            selectedControlGroup: cg,
+            selectedWeekStart: ws,
+            selectedWeekEnding: we
+        };
+
+        return filterCriteria;
+    }
+    Search(): void {
+        // this.onChangeTable(this.config);
+        this.dataLoaded = false;
+
+        this.employeeBreakInServiceReports();
     }
 
     employeeBreakInServiceReports(): void {
-        this._employeeBreakInServiceReportService.getEmployeeDemographicsReports().subscribe(empbreakinservice => {
+        const filterCriteria = this.getFilterValues();
+
+        this._employeeBreakInServiceReportService.getEmployeeBreakInServiceReports(filterCriteria).subscribe(empbreakinservice => {
             this.employeeBeakInService = empbreakinservice;
             this.onChangeTable(this.config);
             this.dataLoaded = true;
@@ -58,25 +109,13 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
             error => this.errorMessage = <any>error);
 
     }
-
-    public onCellClick(data: any): any {
-        console.log(data);
-    }
-
     downloadPdf(): void {
 
     }
 
     downloadExcel(): void {
-        const tbl = document.getElementById('datatable');
-        const btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0) {
-            this._export.excelByTableElement(btn, tbl.children[0],
-                'Break In Service Report', 'EmployeeBreakInService');
-        }
+        const filterCriteria = this.getFilterValues();
+        this._employeeBreakInServiceReportService.downloadExcelReport(filterCriteria);
     }
 
     public changeSort(data: any, config: any): any {

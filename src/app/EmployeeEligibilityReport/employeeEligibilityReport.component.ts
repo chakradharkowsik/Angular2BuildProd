@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeEligibilityReportService } from './employeeEligibilityReport.service';
-import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
-import { ExportToExcelService } from '../shared/export.service';
 
 @Component({
     moduleId: module.id,
@@ -11,6 +9,16 @@ import { ExportToExcelService } from '../shared/export.service';
 export class EmployeeEligibilityReportComponent implements OnInit {
 
     dataLoaded: boolean;
+    selectedYear: string;
+    selectedUnionStatus: string;
+    selectedControlGroup: string;
+    selectedTypeOfHours: string;
+
+    Years: Array<string>;
+    UnionStatus: Array<string>;
+    ControlGroups: Array<string>;
+    TypeOfHours: Array<string>;
+
     public rows: Array<any> = [];
     public page = 1;
     public itemsPerPage = 10;
@@ -19,16 +27,17 @@ export class EmployeeEligibilityReportComponent implements OnInit {
     public length = 0;
 
     public columns: Array<any> = [
-
-        { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
-        { title: 'Union Status', className: 'va-m', name: 'unionStatus' },
-        { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
-        { title: 'Most Recent Show', className: 'va-m', name: 'mostRecentShow' },
-        { title: 'Most Recent Job Title', className: 'va-m', name: 'mostRecentJobTitle' },
-        { title: 'Avg Weekly Hours', className: 'va-m', name: 'averageWeeklyHours' },
-        { title: 'Total Hours', className: 'va-m', name: 'totalHours' },
-        { title: 'Standard Measured Eligibility', className: 'va-m', name: 'standardMeasuredEligibility' },
-        { title: 'Benefits Effective', className: 'va-m', name: 'benefitsEffective' },
+        { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
+        { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
+        { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
+        { title: 'SSN', className: 'va-m', name: 'SSN' },
+        { title: 'Most Recent Show', className: 'va-m', name: 'MostRecentShow' },
+        { title: 'Most Recent Job Title', className: 'va-m', name: 'MostRecentJobTitle' },
+        { title: 'Avg Weekly Hours', className: 'va-m', name: 'AverageWeeklyHours' },
+        { title: 'Total Hours', className: 'va-m', name: 'TotalHours' },
+        { title: 'Standard Measured Eligibility', className: 'va-m', name: 'StandardMeasuredEligibility' },
+        { title: 'Benefits Effective', className: 'va-m', name: 'BenefitsEffective' },
 
     ];
 
@@ -41,18 +50,55 @@ export class EmployeeEligibilityReportComponent implements OnInit {
 
     empDetails: Array<any> = [];
     errorMessage: string;
-    constructor(private _employeeEligibilityReportService: EmployeeEligibilityReportService, private _export: ExportToExcelService) { }
+    constructor(private _employeeEligibilityReportService: EmployeeEligibilityReportService) { }
 
     ngOnInit(): void {
 
-        this.onChangeTable(this.config);
-        this.dataLoaded = false;
-        this.employeeEligibleReportsData();
+        this._employeeEligibilityReportService.getReportReferenceData().subscribe(data => {
+            this.Years = data.WorkYear;
+            this.ControlGroups = data.ControlGroup;
+            this.UnionStatus = data.UnionStatus;
+            this.TypeOfHours = data.TypeOfHours;
 
+        },
+            error => this.errorMessage = <any>error);
+
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+        this.selectedUnionStatus = '-1';
+        this.selectedTypeOfHours = '-1';
+    }
+    getFilterValues(): any {
+        let year = this.selectedYear;
+        if (year === '-1') {
+            year = "''";
+        }
+
+        let cg = this.selectedControlGroup;
+        if (cg === 'All' || cg === '-1' || cg === undefined) {
+            cg = "''";
+        }
+        let us = this.selectedUnionStatus;
+        if (us === '' || us === '-1' || us === undefined) {
+            us = "''";
+        }
+        let th = this.selectedTypeOfHours;
+        if (th === '' || th === '-1' || th === undefined) {
+            th = "''";
+        }
+        let filterCriteria: any = {
+            selectedYear: year,
+            selectedControlGroup: cg,
+            selectedUnionStatus: us,
+            selectedTypeOfHours: th
+        };
+
+        return filterCriteria;
     }
 
     employeeEligibleReportsData(): void {
-        this._employeeEligibilityReportService.getEmployeeEligibleReports().subscribe(empdetails => {
+        const filterCriteria = this.getFilterValues();
+        this._employeeEligibilityReportService.getEmployeeEligibleReports(filterCriteria).subscribe(empdetails => {
             this.empDetails = empdetails;
             this.onChangeTable(this.config);
             this.dataLoaded = true;
@@ -61,8 +107,10 @@ export class EmployeeEligibilityReportComponent implements OnInit {
 
     }
 
-    public onCellClick(data: any): any {
-        console.log(data);
+    Search(): void {
+
+        this.dataLoaded = false;
+        this.employeeEligibleReportsData();
     }
 
     downloadPdf(): void {
@@ -70,14 +118,8 @@ export class EmployeeEligibilityReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        const tbl = document.getElementById('datatable');
-        const btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0) {
-            this._export.excelByTableElement(btn, tbl.children[0], 'Employee Eligibility Report');
-        }
+        const filterCriteria = this.getFilterValues();
+        this._employeeEligibilityReportService.downloadExcelReport(filterCriteria);
     }
     public changeSort(data: any, config: any): any {
         if (!config.sorting) {

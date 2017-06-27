@@ -67,10 +67,10 @@ var Demo = function() {
       $("<link/>", {
         rel: "stylesheet",
         type: "text/css",
-        href: window.location.protocol + '//' + window.location.hostname + '/assets/js/plugins/highlight/styles/github.css'
+        href: window.document.getElementById("baseAddr").href + '/assets/js/plugins/highlight/styles/github.css'
       }).appendTo("head");
 
-      $.getScript(window.location.protocol + '//' + window.location.hostname + '/assets/js/plugins/highlight/highlight.pack.js');
+      $.getScript(window.document.getElementById("baseAddr").href + '/assets/js/plugins/highlight/highlight.pack.js');
 
       // Define Source code modal
       var modalSource = '<div class="modal fade" id="source-modal" tabindex="-1" role="dialog">  ' +
