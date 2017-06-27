@@ -18,11 +18,11 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
     ControlGroups: Array<string>;
 
     public rows: Array<any> = [];
-    public page = 1;
-    public itemsPerPage = 5;
-    public maxSize = 5;
-    public numPages = 1;
-    public length = 0;
+    public page: number = 1;
+    public itemsPerPage: number = 5;
+    public maxSize: number = 5;
+    public numPages: number = 1;
+    public length: number = 0;
 
     public columns: Array<any> = [
         { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
@@ -82,7 +82,7 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
         if (we === '' || we === undefined) {
             we = "''";
         }
-        const filterCriteria = {
+        let filterCriteria: any = {
             selectedYear: year,
             selectedControlGroup: cg,
             selectedWeekStart: ws,
@@ -99,7 +99,7 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
     }
 
     employeeBreakInServiceReports(): void {
-        const filterCriteria = this.getFilterValues();
+        let filterCriteria = this.getFilterValues();
 
         this._employeeBreakInServiceReportService.getEmployeeBreakInServiceReports(filterCriteria).subscribe(empbreakinservice => {
             this.employeeBeakInService = empbreakinservice;
@@ -114,7 +114,7 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        const filterCriteria = this.getFilterValues();
+        let filterCriteria = this.getFilterValues();
         this._employeeBreakInServiceReportService.downloadExcelReport(filterCriteria);
     }
 
@@ -123,7 +123,7 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
             return data;
         }
 
-        const columns = this.config.sorting.columns || [];
+        let columns = this.config.sorting.columns || [];
         let columnName: string = void 0;
         let sort: string = void 0;
 
@@ -158,8 +158,8 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
             Object.assign(this.config.sorting, config.sorting);
         }
 
-        const filteredData = this.changeFilter(this.employeeBeakInService, this.config);
-        const sortedData = this.changeSort(filteredData, this.config);
+        let filteredData = this.changeFilter(this.employeeBeakInService, this.config);
+        let sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
     }
@@ -183,7 +183,7 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
                 item[config.filtering.columnName].match(this.config.filtering.filterString));
         }
 
-        const tempArray: Array<any> = [];
+        let tempArray: Array<any> = [];
         filteredData.forEach((item: any) => {
             let flag = false;
             this.columns.forEach((column: any) => {
@@ -201,8 +201,8 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
     }
 
     public changePage(page: any, data: Array<any> = this.employeeBeakInService): Array<any> {
-        const start = (page.page - 1) * page.itemsPerPage;
-        const end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
+        let start = (page.page - 1) * page.itemsPerPage;
+        let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
         return data.slice(start, end);
     }
 
