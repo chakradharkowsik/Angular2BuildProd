@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var payrollDataActivityReport_service_1 = require("./payrollDataActivityReport.service");
-var export_service_1 = require("../shared/export.service");
 var PayrollDataActivityReportComponent = (function () {
-    function PayrollDataActivityReportComponent(_pdareportsrv, _export) {
+    function PayrollDataActivityReportComponent(_pdareportsrv) {
         this._pdareportsrv = _pdareportsrv;
-        this._export = _export;
         this.workDetails = [];
         this.rows = [];
         this.columns = [
@@ -105,14 +103,8 @@ var PayrollDataActivityReportComponent = (function () {
     PayrollDataActivityReportComponent.prototype.downloadPdf = function () {
     };
     PayrollDataActivityReportComponent.prototype.downloadExcel = function () {
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0) {
-            this._export.excelByTableElement(btn, tbl.children[0], 'New Hire Part Time Report');
-        }
+        var filterCriteria = this.getFilterValues();
+        this._pdareportsrv.downloadExcelReport(filterCriteria);
     };
     // Validations
     PayrollDataActivityReportComponent.prototype.validateControlGroups = function () {
@@ -207,7 +199,7 @@ PayrollDataActivityReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: './payrollDataActivityReport.html'
     }),
-    __metadata("design:paramtypes", [payrollDataActivityReport_service_1.PayrollDataActivityReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [payrollDataActivityReport_service_1.PayrollDataActivityReportService])
 ], PayrollDataActivityReportComponent);
 exports.PayrollDataActivityReportComponent = PayrollDataActivityReportComponent;
 //# sourceMappingURL=payrollDataActivityReport.component.js.map

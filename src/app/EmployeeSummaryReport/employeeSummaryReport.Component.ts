@@ -47,11 +47,11 @@ export class EmployeeSummaryReportComponent implements OnInit {
         { title: 'Intially Stability Period', className: 'va-m', name: 'initialStabilityPeriod' }
 
     ];
-    public page = 1;
-    public itemsPerPage = 4;
-    public maxSize = 5;
-    public numPages = 1;
-    public length = 0;
+    public page: number = 1;
+    public itemsPerPage: number = 4;
+    public maxSize: number = 5;
+    public numPages: number = 1;
+    public length: number = 0;
 
     public config: any = {
         paging: true,
@@ -82,16 +82,15 @@ export class EmployeeSummaryReportComponent implements OnInit {
             error => this.errorMessage = <any>error);
 
     }
-    public onCellClick(data: any): any {
+public onCellClick(data: any): any {
         console.log(data);
     }
-
     downloadPdf(): void {
 
     }
 
     downloadExcel(): void {
-        const tbl = document.getElementById('datatable');
+const tbl = document.getElementById('datatable');
         const btn = document.getElementById('btnDownloadExcel');
         if (tbl) {
             console.log(tbl.children[0]);
@@ -101,12 +100,13 @@ export class EmployeeSummaryReportComponent implements OnInit {
         }
     }
 
+
     public changeSort(data: any, config: any): any {
         if (!config.sorting) {
             return data;
         }
 
-        const columns = this.config.sorting.columns || [];
+        let columns = this.config.sorting.columns || [];
         let columnName: string = void 0;
         let sort: string = void 0;
 
@@ -141,8 +141,8 @@ export class EmployeeSummaryReportComponent implements OnInit {
             Object.assign(this.config.sorting, config.sorting);
         }
 
-        const filteredData = this.changeFilter(this.empDetails, this.config);
-        const sortedData = this.changeSort(filteredData, this.config);
+        let filteredData = this.changeFilter(this.empDetails, this.config);
+        let sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
     }
@@ -166,7 +166,7 @@ export class EmployeeSummaryReportComponent implements OnInit {
                 item[config.filtering.columnName].match(this.config.filtering.filterString));
         }
 
-        const tempArray: Array<any> = [];
+        let tempArray: Array<any> = [];
         filteredData.forEach((item: any) => {
             let flag = false;
             this.columns.forEach((column: any) => {
@@ -184,8 +184,8 @@ export class EmployeeSummaryReportComponent implements OnInit {
     }
 
     public changePage(page: any, data: Array<any> = this.empDetails): Array<any> {
-        const start = (page.page - 1) * page.itemsPerPage;
-        const end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
+        let start = (page.page - 1) * page.itemsPerPage;
+        let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
         return data.slice(start, end);
     }
 

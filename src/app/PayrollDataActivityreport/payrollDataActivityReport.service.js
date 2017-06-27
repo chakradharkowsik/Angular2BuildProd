@@ -15,24 +15,27 @@ var app_config_1 = require("../app.config");
 var PayrollDataActivityReportService = (function () {
     function PayrollDataActivityReportService(_http) {
         this._http = _http;
-        this._pdaReportUrl = app_config_1.CONFIGURATION.baseServiceUrl;
+        this._pdaReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'payrolldataactivityreportservice/';
     }
     PayrollDataActivityReportService.prototype.getReportData = function () {
-        return this._http.get(this._pdaReportUrl + 'payrollDataActivityReport/getPayrollReferenceData')
+        return this._http.get(this._pdaReportUrl + 'getPayrollDataActivityReportReferenceData')
             .map(function (response) { return response.json().payrollRefDataVO; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     PayrollDataActivityReportService.prototype.getPayrollDataActivityReportData = function (filterCriteria) {
-        var fileName = "payrollDataActivityReport/getReportsForPayrollDataActivity?WorkYear=" + filterCriteria.selectedYear
-            + "&ControlGroup=" + filterCriteria.selectedControlGroup;
+        var fileName = 'getPayrollDataActivityReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
         return this._http.get(this._pdaReportUrl + fileName)
             .map(function (response) { return response.json().reportsForPayrollDataActivity; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    PayrollDataActivityReportService.prototype.getYears = function () { return ['2016', '2017', '2018']; };
-    PayrollDataActivityReportService.prototype.getControlGroups = function () { return ['Revolution', 'Cast & Crew']; };
+    PayrollDataActivityReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processPayrollDataActivityReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+        window.open(this._pdaReportUrl + fileName, '_bank');
+    };
     PayrollDataActivityReportService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

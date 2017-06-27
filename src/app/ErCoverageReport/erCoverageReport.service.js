@@ -16,17 +16,17 @@ var ErCoverageReportService = (function () {
     function ErCoverageReportService(_http) {
         this._http = _http;
         // private _erCoverageReportUrl = 'app/api/';
-        this._erCoverageReportUrl = app_config_1.CONFIGURATION.baseServiceUrl;
+        this._erCoverageReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'ercoveragereportservice/';
     }
     ErCoverageReportService.prototype.getReportData = function () {
-        return this._http.get(this._erCoverageReportUrl + 'erCoverageReport/getERCoverageReferenceData')
+        return this._http.get(this._erCoverageReportUrl + 'getERCoverageReportReferenceData')
             .map(function (response) { return response.json().erCoverageReferanceDataVO; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     ErCoverageReportService.prototype.getAnnulaizedMonthlyWorkers = function (filterCriteria) {
-        var fileName = "erCoverageReport/getAnnualizedMonthlyCount?WorkYear=" + filterCriteria.selectedYear
-            + "&ControlGroup=" + filterCriteria.selectedControlGroup;
+        var fileName = 'getERCoverageReportCountByWeek?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
         return this._http.get(this._erCoverageReportUrl + fileName)
             .map(function (response) { return response.json().annualizedMonthlyCountVO; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
@@ -34,13 +34,19 @@ var ErCoverageReportService = (function () {
         //  return { annulaizedMonthly: "26" };
     };
     ErCoverageReportService.prototype.getAnnulaizedMonthlyWorkersReportData = function (filterCriteria) {
-        var fileName = "erCoverageReport/getReportsByAnnualizedMonthlyCount?WorkYear=" + filterCriteria.selectedYear
-            + "&ControlGroup=" + filterCriteria.selectedControlGroup
-            + "";
+        var fileName = 'getERCoverageReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '';
         return this._http.get(this._erCoverageReportUrl + fileName)
             .map(function (response) { return response.json().reportsByAnnualizedMonthlyCountVO; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
+    };
+    ErCoverageReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processERCoverageReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '';
+        window.open(this._erCoverageReportUrl + fileName, '_bank');
     };
     ErCoverageReportService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
