@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { Ng2TableModule } from 'ng2-table';
 import { PaginationModule, TabsModule } from 'ng2-bootstrap';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { APPROUTES } from './app.routes';
 import { ExportToExcelService } from './shared/index';
 
@@ -29,6 +30,7 @@ import {
   OneZeroNineFiveDataUploadComponent,
   PayrollDataUploadComponent,
   EmployeeSummaryReportComponent, EmployeeSummaryReportService,
+  ControlGroupService, ApplicableLargeEmployeeService,
   OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent
 } from './index';
 
@@ -38,6 +40,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    MultiselectDropdownModule,
     RouterModule.forRoot(APPROUTES, { useHash: true }),
     Ng2TableModule,
     PaginationModule.forRoot(),
@@ -81,7 +84,9 @@ import {
     EmployeeDemographicReportService,
     EmployeeBreakInServiceReportService,
     PayrollDataActivityReportService,
-    EmployeeSummaryReportService
+    EmployeeSummaryReportService,
+    ControlGroupService,
+    ApplicableLargeEmployeeService
   ],
   bootstrap: [AppComponent]
 })
