@@ -178,7 +178,7 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
             }, error => this.errorMessage = <any>error);
     }
 
-    deleteControlGroup(id: string, name: string, fein: string): void {
+    deleteAle(id: string, name: string, fein: string): void {
 
         if (confirm('Are you sure to delete ' + name)) {
             this._service.removeAle(id, name, fein)

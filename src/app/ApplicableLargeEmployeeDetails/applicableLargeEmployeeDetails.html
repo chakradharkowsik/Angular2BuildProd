@@ -1,0 +1,467 @@
+<!-- -------------- Main Wrapper -------------- -->
+<section id="content_wrapper">
+    <!-- -------------- Topbar -------------- -->
+    <header id="topbar" class="ph10">
+        <div class="topbar-left">
+            <div class="allcp-form theme-primary">
+                <div class="panel panel-primary" id="p2" data-panel-color="false" data-panel-fullscreen="false" data-panel-remove="false"
+                    data-panel-title="false">
+                    <div class="panel-heading">
+                        <!--<span class="panel-title">Client Onboarding - Personall Information</span>                        -->
+                        <span class="panel-title">ALE</span>
+                    </div>
+                    <div class="panel-body">
+                        <!-- -------------- Content -------------- -->
+                        <section id="content" class="table-layout animated fadeIn">
+                            <!-- -------------- Products Status Table -------------- -->
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <div class="panel">
+                                        <div class="panel-heading">
+                                            <span class="panel-title hidden-xs"> Applicable Large Employee</span>
+                                        </div>
+                                        <div class="panel-body pn">
+                                            <div class="table-responsive">
+                                                <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                                    <thead>
+                                                        <tr class="bg-light">
+                                                            <th class="text-center"></th>
+                                                            <th class="text-center"></th>
+                                                            <th class=""> AleDetails Id</th>
+                                                            <th class="">Ale Id</th>
+                                                            <th class="">Ale Tax Year</th>
+                                                            <th class="">AcaSubscriber</th>
+                                                            <th class="">FilingAuthoritative1094c</th>
+                                                            <th class="">AcaReportingShared</th>
+                                                            <th class="">hTransitionRelief</th>
+                                                            <th class="">Additional1095c Count</th>
+                                                            <th class="text-right">Control Group</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Jan</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Feb</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Mar</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Apr</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee May</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Jun</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Jul</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Aug</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Sep</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Oct</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Nov</th>
+                                                            <th class="text-right">Additiontional Fulltime Ee Dec</th>
+                                                            <th class="text-right">Additiontional Total Ee Jan</th>
+                                                            <th class="text-right">Additiontional Total Ee Feb</th>
+                                                            <th class="text-right">Additiontional Total Ee Mar</th>
+                                                            <th class="text-right">Additiontional Total Ee Apr</th>
+                                                            <th class="text-right">Additiontional Total Ee May</th>
+                                                            <th class="text-right">Additiontional Total Ee Jun</th>
+                                                            <th class="text-right">Additiontional Total Ee Jul</th>
+                                                            <th class="text-right">Additiontional Total Ee Aug</th>
+                                                            <th class="text-right">Additiontional Total Ee Sep</th>
+                                                            <th class="text-right">Additiontional Total Ee Oct</th>
+                                                            <th class="text-right">Additiontional Total Ee Nov</th>
+                                                            <th class="text-right">Additiontional Total Ee Dec</th>
+                                                            <th class="text-right">Active</th>
+                                                            <th class="text-right">Deleted</th>
+                                                            <th class="text-right">Created By</th>
+                                                            <th class="text-right">Created Date</th>
+                                                            <th class="text-right">Modified By</th>
+                                                            <th class="text-right">Modified Date</th>
+                                                            <th class="text-right">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let row of data">
+                                                            <td class="text-center">
+                                                                <label class="option block mn">
+                                                                <input type="checkbox" name="inputname" value="FR">
+                                                                <span class="checkbox mn"></span>
+                                                            </label>
+                                                            </td>
+                                                            <td class="w100">
+                                                                <img class="img-responsive mw40 ib mr10" title="user" src="assets/img/pages/products/1.jpg">
+                                                            </td>
+                                                            <td class=""> {{row?.aleDetailsId}} </td>
+                                                            <td class=""> {{row?.aleId}} </td>
+                                                            <td class=""> {{row?.aleTaxYear}} </td>
+                                                            <td class=""> {{row?.isAcaSubscriber}} </td>
+                                                            <td class=""> {{row?.isFilingAuthoritative1094c}} </td>
+                                                            <td class=""> {{row?.isAcaReportingShared}} </td>
+                                                            <td class=""> {{row?.hTransitionRelief}} </td>
+                                                            <td class=""> {{row?.additional1095cCount}} </td>
+                                                            <td class=""> {{row?.controlGroupId}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeJan}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeFeb}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeMar}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeApr}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeMay}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeJun}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeJul}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeAug}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeSep}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeOct}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeNov}} </td>
+                                                            <td class=""> {{row?.additiontionalFulltimeEeDec}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeJan}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeFeb}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeMar}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeApr}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeMay}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeJun}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeJul}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeAug}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeSep}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeOct}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeNov}} </td>
+                                                            <td class=""> {{row?.additiontionalTotalEeDec}} </td>
+                                                            <td class=""> {{row?.active}} </td>
+                                                            <td class=""> {{row?.deleted}} </td>
+                                                            <td class=""> {{row?.createdBy}} </td>
+                                                            <td class=""> {{row?.createdDate}} </td>
+                                                            <td class=""> {{row?.modifiedBy}} </td>
+                                                            <td class=""> {{row?.modifiedDate}} </td>
+
+                                                            <td class="text-right">
+                                                                <div class="btn-group text-right">
+                                                                    <button type="button" class="btn btn-success br2 btn-xs fs12 " data-toggle="modal" data-target="#myModal" (click)="editAleDetails(row?.aleId,row?.aleDetailsId,row?.aleTaxYear)"> Edit</button>
+                                                                    <button type="button" class="btn btn-danger br2 btn-xs fs12 " data-toggle="modal" data-target="#myModall" (click)="deleteAleDetails(row?.aleId,row?.aleDetailsId,row?.aleTaxYear)"> Delete</button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li>
+                                                                            <a href="#" data-toggle="modal" data-target="#myModal">Edit</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">Delete</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- -------------- /Content -------------- -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- -------------- /Topbar -------------- -->
+</section>
+
+<section>
+    <div class="allcp-form theme-primary">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title"></div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- -------------- Standard Fields -------------- -->
+                        <form class="form-horizontal" role="form" (ngSubmit)="updateAleDeetails()" [formGroup]="aleDetailsForm">
+                            <div class="panel-body">
+                                <!-- <not closed> -->
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="section row">
+                                            <div class="col-md-6 ph10 mb5">
+                                                <h6 class=""> ALE Name</h6>
+                                                <label for="alename" class="field prepend-icon">
+                                                   <input type="text" name="alename" id="alename" class="gui-input" placeholder="ALE Name..." aria-required="true" aria-invalid="true">
+                                                    <label for="alename" class="field-icon">
+                                                       <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 ph10 mb5">
+                                                <h6 class="">Modified</h6>
+                                                <label for="modified" class="field prepend-icon">
+                                                    <input type="text" name="modified" id="lastname" class="gui-input" placeholder="Modified..." aria-required="true" aria-invalid="true">
+                                                    <label for="modified" class="field-icon">
+                                                       <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-md-6 ph10 mb5">
+                                                <h6 class="">Tier Years</h6>
+                                                <label class="field select">
+                                                 <select id="language" name="Tieryears" aria-required="true" aria-invalid="true">
+                                                    <option value="">Tier Years...</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1984">1984</option>
+                                                 </select>
+                                                 <i class="arrow double"></i>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 ph10 mb5">
+                                                <h6 class="">Modified Years</h6>
+                                                <label for="serchvvvv" class="field prepend-icon">
+                                                    <input type="text" name="serchvvvv" id="serchvvvv" class="gui-input" placeholder="Modified Years..." aria-required="true" aria-invalid="true">
+                                                    <label for="serchvvvv" class="field-icon">
+                                                       <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-md-6 ph10 border-right">
+                                                <fieldset>
+                                                    <legend>Is EP ACA Subscriber ?</legend>
+                                                    <div class="option-group field">
+                                                        <label for="iphone5" class="option option-primary">
+                                                         <input type="radio" name="mobile1" id="iphone5" value="iphone5">
+                                                          <span class="radio"></span> Yes
+                                                        </label>
+
+                                                        <label for="iphone5c" class="option option-primary mt10">
+                                                          <input type="radio" name="mobile1" id="iphone5c" value="iphone5c">
+                                                           <span class="radio"></span> No
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Is EP ACA Subscriber ?</legend>
+                                                    <div class="option-group field">
+                                                        <label for="iphone56" class="option option-primary">
+                                                         <input type="radio" name="mobile2" id="iphone56" value="yes">
+                                                          <span class="radio"></span> Yes
+                                                        </label>
+
+                                                        <label for="iphone5cc" class="option option-primary mt10">
+                                                          <input type="radio" name="mobile2" id="iphone5cc" value="no">
+                                                           <span class="radio"></span> No
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend>Is EP ACA Subscriber ?</legend>
+                                                    <div class="option-group field">
+                                                        <label for="iphone567" class="option option-primary">
+                                                         <input type="radio" name="mobile3" id="iphone567" value="yess">
+                                                          <span class="radio"></span> Yes
+                                                        </label>
+
+                                                        <label for="iphone5cc7" class="option option-primary mt10">
+                                                          <input type="radio" name="mobile3" id="iphone5cc7" value="noo">
+                                                           <span class="radio"></span> No
+                                                        </label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6 ph10">
+                                                <fieldset>
+                                                    <legend>Is EP ACA Subscriber not ?</legend>
+                                                    <div class="option-group field">
+                                                        <label for="iphone59" class="option option-primary block">
+                                                            <input type="radio" name="mobile" id="iphone59" value="iphone5">
+                                                            <span class="radio"></span> Apply to controlled Group
+                                                        </label>
+
+                                                        <label for="iphone5cm" class="option block option-primary mt10">
+                                                            <input type="radio" name="mobile" id="iphone5cm" value="iphone5c">
+                                                            <span class="radio"></span> Apply to controlled Group
+                                                        </label>
+
+                                                        <label for="iphone5sn" class="option block option-primary mt10">
+                                                            <input type="radio" name="mobile" id="iphone5sn" value="iphone5s">
+                                                            <span class="radio"></span> Apply to controlled Group
+                                                        </label>
+                                                    </div>
+                                                    <button type="button" style="margin-top: 15px;" class="btn ui-datepicker-buttonpane button">Apply to controlled Group</button>
+                                                </fieldset>
+                                                <div class="mb5 mt5">
+                                                    <h6>Aditional 1095C Count</h6>
+                                                    <label for="serchvvv" class="field prepend-icon">
+                                                       <input type="text" name="serchvvv" id="serchvvv" class="gui-input" placeholder="Aditional 1095C Count" aria-required="true" aria-invalid="true">
+                                                       <label for="serchvvv" class="field-icon">
+                                                          <i class="fa fa-user"></i>
+                                                        </label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="section row">
+                                            <div class="col-md-6 ph10 mb5">
+                                                <h6>Ins Policy Holder</h6>
+                                                <div class="smart-widget sm-right smr-50">
+                                                    <label for="serchv" class="field prepend-icon">
+                                                        <input type="search" name="serchv" id="serchv" class="gui-input" placeholder="Ins Policy Holder" aria-required="true" aria-invalid="true">
+                                                    </label>
+                                                    <button type="submit" class="button btn-primary">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ph10 mb5">
+                                                <h6>Ins Policy Holder</h6>
+                                                <div class="smart-widget sm-right smr-50">
+                                                    <label for="serchvv" class="field prepend-icon">
+                                                        <input type="search" name="serchvv" id="serchvv" class="gui-input" placeholder="Controlled Group" aria-required="true" aria-invalid="true">
+                                                    </label>
+                                                    <button type="submit" class="button btn-primary">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="allcp-form allcp-list theme-primary center-block">
+                                            <h6 class="">Is EP ACA Subscriber ?</h6>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">January</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">Februray</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">March</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">April</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">May</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">June</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">July</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">August</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">September</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">October</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">November</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                            <div class="section row">
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <label class="label-list">December</label>
+                                                </div>
+                                                <div class="col-md-4 ph10 mb5">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="" aria-required="true" aria-invalid="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-right">
+                                <button type="submit" class="btn btn-bordered btn-primary mb5"> Validate Form</button>
+                                <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -3790,7 +3790,7 @@ div.DTE_Inline div.DTE_Field input {
   /* IE10+ */
   background: -o-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
   /* Opera 11.10+ */
-  background: linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  background: linear-gradient(to right, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
   /* W3C */
   /* IE6-9 */
   opacity: 0.95;

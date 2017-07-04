@@ -23,6 +23,7 @@ import {
   OnboardingCustomerInformationComponent,
   OnboardingPersonalInformationComponent,
   ControlGroupComponent, ApplicableLargeEmployeeComponent,
+  ApplicableLargeEmployeeDetailsComponent,
   ClientPayrollComponent,
   AleDataUploadComponent,
   InsuranceDataUploadComponent,
@@ -30,7 +31,7 @@ import {
   OneZeroNineFiveDataUploadComponent,
   PayrollDataUploadComponent,
   EmployeeSummaryReportComponent, EmployeeSummaryReportService,
-  ControlGroupService, ApplicableLargeEmployeeService,
+  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService,
   OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent
 } from './index';
 
@@ -63,6 +64,7 @@ import {
     AleDataUploadComponent,
     ControlGroupComponent,
     ApplicableLargeEmployeeComponent,
+    ApplicableLargeEmployeeDetailsComponent,
     ErCoverageReportComponent,
     EmployeeEligibilityReportComponent,
     EmployeeDemographicReportComponent,
@@ -86,7 +88,8 @@ import {
     PayrollDataActivityReportService,
     EmployeeSummaryReportService,
     ControlGroupService,
-    ApplicableLargeEmployeeService
+    ApplicableLargeEmployeeService,
+    ApplicableLargeEmployeeDetailsService
   ],
   bootstrap: [AppComponent]
 })

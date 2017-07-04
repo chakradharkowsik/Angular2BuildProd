@@ -24,5 +24,6 @@ export const CONFIGURATION = {
     'onezeroninefourdataupload': 'onezeroninefourdataupload',
     'onezeroninefivedataupload': 'onezeroninefivedataupload',
     'controlgroup': 'controlgroup',
-    'ale': 'ale'
+    'ale': 'ale',
+    'aledetails': 'aledetails'
 };

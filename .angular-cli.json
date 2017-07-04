@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "./assets/skin/default_skin/css/theme.css",
+        "./assets/skin/default_skin/css/theme.min.css",
         "./assets/allcp/forms/css/forms.min.css",
         "./assets/js/plugins/datatables/media/css/dataTables.bootstrap.css",
         "./assets/js/plugins/datatables/extensions/Editor/css/dataTables.editor.css",
